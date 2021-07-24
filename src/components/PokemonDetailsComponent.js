@@ -1,27 +1,25 @@
-import React, {Component} from 'react';
 import NavbarComponent from "./NavbarComponent";
 import "../css/details.css";
 import PokemonService from "../service/PokemonService";
+import {useState, useEffect} from "react";
 
-class PokemonDetailsComponent extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            id: this.props.match.params.pokemonId,
-            pokemon: "",
-            name: ""
-        }
-    }
+const PokemonDetailsComponent = props => {
+    const [state, setState] = useState({
+        id: props.match.params.pokemonId,
+        pokemon: "",
+    })
 
-    componentDidMount() {
-        PokemonService.getPokemonDetailsById(this.state.id).then(r => {
-            this.setState({pokemon: r.data})
-            console.log(r.data)
-            this.setState({name: this.state.pokemon.forms[0].name})
+    const [name, setName] = useState({
+        name: ""
+    })
+
+    useEffect(() => {
+        PokemonService.getPokemonDetailsById(state.id).then(r => {
+            setState({pokemon: r.data})
+            setName({name: r.data.forms[0].name})
         })
-    }
+    })
 
-    render() {
         return (
             <div>
                 <NavbarComponent />
@@ -29,16 +27,16 @@ class PokemonDetailsComponent extends Component {
                     <div className="row">
                         <div className="col-md-5">
                             <div className="project-info-box mt-0">
-                                <h5>{this.state.name}</h5>
+                                <h5>{name.name}</h5>
                                 {/*<p className="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor*/}
                                 {/*    porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est.*/}
                                 {/*    Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>*/}
                             </div>
 
                             <div className="project-info-box">
-                                <p><b>Base experience:</b> {this.state.pokemon.base_experience}</p>
-                                <p><b>Height:</b> {this.state.pokemon.height}</p>
-                                <p><b>Weight:</b> {this.state.pokemon.weight}</p>
+                                <p><b>Base experience:</b> {state.pokemon.base_experience}</p>
+                                <p><b>Height:</b> {state.pokemon.height}</p>
+                                <p><b>Weight:</b> {state.pokemon.weight}</p>
                                 {/*<p className="mb-0"><b>Budget:</b> $500</p>*/}
                             </div>
 
@@ -55,7 +53,6 @@ class PokemonDetailsComponent extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default PokemonDetailsComponent;
