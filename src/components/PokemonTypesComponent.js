@@ -14,8 +14,8 @@ class PokemonTypesComponent extends Component {
     componentDidMount() {
         PokemonService.getPokemonTypes().then(r => {
             this.setState({types: r.data.results})
-            console.log(this.state.types)
-            console.log(r.data)
+            // console.log(this.state.types)
+            // console.log(r.data)
         })
     }
 
