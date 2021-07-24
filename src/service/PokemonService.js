@@ -13,6 +13,10 @@ class PokemonService {
         return axios.get(URL);
     }
 
+    getPokemonTypes() {
+        return axios.get('https://pokeapi.co/api/v2/type');
+    }
+
 }
 
 export default new PokemonService();
