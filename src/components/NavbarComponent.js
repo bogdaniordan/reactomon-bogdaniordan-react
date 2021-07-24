@@ -9,7 +9,7 @@ class NavbarComponent extends Component {
             <div>
                 <Navbar bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand href="/pokemon-list">Pokemon list</Navbar.Brand>
+                        <Navbar.Brand href="/pokemons">Pokemon list</Navbar.Brand>
                         <Navbar.Brand href="#home">Pokemon detail</Navbar.Brand>
 
                         {/*<Nav className="me-auto">*/}
