@@ -7,19 +7,12 @@ const CaughtPokemons = props => {
         return (
             <div>
                 <NavbarComponent />
-                {/*{console.log(JSON.parse(localStorage.getItem('pokemons')))}*/}
                 <h3>Caught pokemons</h3>
                 {
                     caughtPokemons.map(
                         pokemon => <div>{pokemon}</div>
                     )
                 }
-                {/*{*/}
-                {/*    pokemons.map(*/}
-                {/*        pokemon => <p>{pokemon}</p>*/}
-                {/*    )*/}
-                {/*}*/}
-                {/*<button onClick={() => pokemons.catchPokemon("IDK")}>HE</button>*/}
             </div>
         );
 }

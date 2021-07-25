@@ -14,7 +14,6 @@ export const PokemonProvider = (props) => {
         } else {
             newCaughtPokemons = [];
         }
-        console.log(newCaughtPokemons)
         newCaughtPokemons.push(newPokemon)
         setCaughtPokemons({pokemons: newCaughtPokemons})
         localStorage.setItem('pokemons', JSON.stringify(newCaughtPokemons));

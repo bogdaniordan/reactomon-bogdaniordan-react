@@ -49,7 +49,7 @@ const PokemonDetailsComponent = props => {
                             <img src="https://cdn.vox-cdn.com/thumbor/3ajecDMOIH59cbOeyO0bap_4wj4=/0x0:2257x1320/1200x800/filters:focal(949x480:1309x840)/cdn.vox-cdn.com/uploads/chorus_image/image/63738986/pokemon.0.0.png" alt="project-image"
                                  className="rounded"/>
                                 <div className="project-info-box">
-                                    <button className="btn btn-success" onClick={() => pokemons.catchPokemon(name.name)}>Catch it!</button>
+                                    {JSON.parse(localStorage.getItem("pokemons")).includes(name.name) ? <p>ALREADY CAUGHT!</p> : <button className="btn btn-success" onClick={() => pokemons.catchPokemon(name.name)}>Catch it!</button>}
                                 </div>
                         </div>
                     </div>
