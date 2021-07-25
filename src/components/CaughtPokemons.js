@@ -3,17 +3,23 @@ import NavbarComponent from "./NavbarComponent";
 import {PokemonContext} from "./PokemonContext";
 
 const CaughtPokemons = props => {
-    const pokemons = useContext(PokemonContext);
+    const caughtPokemons = JSON.parse(localStorage.getItem('pokemons'));
         return (
             <div>
                 <NavbarComponent />
-                {console.log(pokemons.caught)}
+                {/*{console.log(JSON.parse(localStorage.getItem('pokemons')))}*/}
+                <h3>Caught pokemons</h3>
+                {
+                    caughtPokemons.map(
+                        pokemon => <div>{pokemon}</div>
+                    )
+                }
                 {/*{*/}
                 {/*    pokemons.map(*/}
                 {/*        pokemon => <p>{pokemon}</p>*/}
                 {/*    )*/}
                 {/*}*/}
-                <button onClick={() => pokemons.catch("IDK")}>HE</button>
+                {/*<button onClick={() => pokemons.catchPokemon("IDK")}>HE</button>*/}
             </div>
         );
 }

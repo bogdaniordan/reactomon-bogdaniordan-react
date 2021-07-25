@@ -8,13 +8,20 @@ export const PokemonProvider = (props) => {
     })
 
     function catchPokemon(newPokemon) {
-        let newCaughtPokemons = caughtPokemons.pokemons;
+        let newCaughtPokemons;
+        if (JSON.parse(localStorage.getItem("pokemons"))) {
+            newCaughtPokemons = JSON.parse(localStorage.getItem("pokemons"));
+        } else {
+            newCaughtPokemons = [];
+        }
+        console.log(newCaughtPokemons)
         newCaughtPokemons.push(newPokemon)
         setCaughtPokemons({pokemons: newCaughtPokemons})
+        localStorage.setItem('pokemons', JSON.stringify(newCaughtPokemons));
     }
 
     return (
-        <PokemonContext.Provider value={{caught: caughtPokemons.pokemons, catch: catchPokemon}}>
+        <PokemonContext.Provider value={{caught: caughtPokemons.pokemons, catchPokemon}}>
             {props.children}
         </PokemonContext.Provider>
     )
