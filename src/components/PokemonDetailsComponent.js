@@ -11,7 +11,6 @@ const PokemonDetailsComponent = props => {
 
     const pokemons = useContext(PokemonContext);
 
-    const [pokemon, setPokemon] = useState({})
     const [name, setName] = useState("");
     const [species, setSpecies] = useState("");
     const [type, setType] = useState("");
@@ -22,7 +21,6 @@ const PokemonDetailsComponent = props => {
 
     function createLocalStorage() {
         if (!JSON.parse(localStorage.getItem("pokemons"))) {
-            console.log("2D")
             localStorage.setItem("pokemons", JSON.stringify([]))
         }
     }
@@ -31,7 +29,6 @@ const PokemonDetailsComponent = props => {
         setIsLoading(true);
         PokemonService.getPokemonDetailsById(id).then(r => {
             setStats(r.data.stats);
-            setPokemon({pokemon: r.data})
             setName(r.data.name);
             setSpecies(r.data.species.name);
             setType(r.data.types[0].type.name);
@@ -40,51 +37,13 @@ const PokemonDetailsComponent = props => {
             setIsLoading(false);
 
             createLocalStorage();
-
-            console.log(JSON.parse(localStorage.getItem("pokemons")))
-            console.log(name);
-
             console.log(stats)
-            console.log(name)
-            console.log(sprites)
-            console.log(pokemon);
-            console.log(r.data);
-            console.log(abilities)
         })
     }, [])
     if (!isLoading) {
         return (
             <div>
                 <NavbarComponent />
-                {/*<div className="container">*/}
-                {/*    <div className="row">*/}
-                {/*        <div className="col-md-5">*/}
-                {/*            <div className="project-info-box mt-0">*/}
-                {/*                <h5>{name}</h5>*/}
-                {/*                <p className="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor*/}
-                {/*                    porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est.*/}
-                {/*                    Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>*/}
-                {/*            </div>*/}
-
-                {/*            <div className="project-info-box">*/}
-                {/*                /!*<p><b>Base experience:</b> {state.pokemon.base_experience}</p>*!/*/}
-                {/*                /!*<p><b>Height:</b> {state.pokemon.height}</p>*!/*/}
-                {/*                /!*<p><b>Weight:</b> {state.pokemon.weight}</p>*!/*/}
-                {/*                /!*<p className="mb-0"><b>Budget:</b> $500</p>*!/*/}
-                {/*            </div>*/}
-
-                {/*        </div>*/}
-
-                {/*        <div className="col-md-7">*/}
-                {/*            <img src="https://cdn.vox-cdn.com/thumbor/3ajecDMOIH59cbOeyO0bap_4wj4=/0x0:2257x1320/1200x800/filters:focal(949x480:1309x840)/cdn.vox-cdn.com/uploads/chorus_image/image/63738986/pokemon.0.0.png" alt="project-image"*/}
-                {/*                 className="rounded"/>*/}
-                {/*            <div className="project-info-box">*/}
-                {/*                {JSON.parse(localStorage.getItem("pokemons")) ? JSON.parse(localStorage.getItem("pokemons")).includes(name) ? <p>ALREADY CAUGHT!</p> : <button className="btn btn-success" onClick={() => pokemons.catchPokemon(name)}>Catch!</button> : ""}*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
                 <div className="container">
                     <div className="row">
                         <div className="col-12 p-0">
@@ -95,9 +54,6 @@ const PokemonDetailsComponent = props => {
                                     <div className="d-flex flex-column align-items-center"><img className="photo"
                                                                                                 src={sprites.front_default}
                                                                                                 alt=""/>
-                                        {/*<p className="fw-bold h4 mt-3">John Doe</p>*/}
-                                        {/*<p className="text-muted">Full Stack Developer</p>*/}
-                                        {/*<p className="text-muted mb-3">Soma,San Francisco, CA</p>*/}
                                         <div className="d-flex ">
                                             {JSON.parse(localStorage.getItem("pokemons")) ? JSON.parse(localStorage.getItem("pokemons")).includes(name) ? <p>ALREADY CAUGHT!</p> : <button className="btn btn-success" onClick={() => pokemons.catchPokemon(name)}>Catch!</button> : ""}
                                         </div>
@@ -142,14 +98,6 @@ const PokemonDetailsComponent = props => {
                                         <p className="py-2">Type</p>
                                         <p className="py-2 text-muted">{type}</p>
                                     </div>
-                                    {/*<div className="d-flex align-items-center justify-content-between border-bottom">*/}
-                                    {/*    <p className="py-2">Mobile</p>*/}
-                                    {/*    <p className="py-2 text-muted">(320) 380-4539</p>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="d-flex align-items-center justify-content-between">*/}
-                                    {/*    <p className="py-2">Address</p>*/}
-                                    {/*    <p className="py-2 text-muted"> Soma,San Francisco,CA</p>*/}
-                                    {/*</div>*/}
                                 </div>
                                 <div className="col-12 bg-white px-3 pb-2">
                                     <h6 className="d-flex align-items-center mb-3 fw-bold py-3"><i
