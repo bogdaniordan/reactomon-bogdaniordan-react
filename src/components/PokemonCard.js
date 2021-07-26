@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import '../css/list_cards.scss'
-import {PokemonContext} from "./PokemonContext";
 import PokemonService from "../service/PokemonService";
-import NavbarComponent from "./NavbarComponent";
 
 const PokemonCard = props => {
     const id = props.pokemonId;
@@ -16,11 +14,14 @@ const PokemonCard = props => {
     const [sprites, setSprites] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
+    const goToPokemonDetails= () => {
+        props.history.push(`pokemon/${id}`)
+    }
 
     useEffect(() => {
         setIsLoading(true);
         PokemonService.getPokemonDetailsById(id).then(r => {
-            setPokemon({pokemon: r.data})
+            setPokemon(r.data)
             setName(r.data.name);
             setSpecies(r.data.species.name);
             setType(r.data.types[0].type.name);
@@ -28,20 +29,11 @@ const PokemonCard = props => {
             setStats(r.data.stats);
             setSprites(r.data.sprites);
             setIsLoading(false);
-
-            console.log(stats)
-            console.log(name)
-            console.log(sprites)
-            console.log(pokemon);
-            console.log(r.data);
-            console.log(abilities)
         })
-    }, [])
+    }, [id])
     if (!isLoading) {
         return (
             <div>
-                {/*<NavbarComponent />*/}
-                {/*<div id="cards">*/}
                     <figure className="card card--normal">
                         <div className="card__image-container">
                             <img src={sprites.front_default}
@@ -52,36 +44,36 @@ const PokemonCard = props => {
                             <h1 className="card__name">{name}</h1>
 
                             <h3 className="card__type">
-                                {species}
+                                {type}
                             </h3>
 
                             <table className="card__stats">
                                 <tbody>
                                 <tr>
                                     <th>HP</th>
-                                    <td>55</td>
+                                    {/*<td>{stats[0].base_stat}</td>*/}
                                 </tr>
                                 <tr>
                                     <th>Attack</th>
-                                    <td>55</td>
+                                    {/*<td>{stats[1].base_stat}</td>*/}
                                 </tr>
 
                                 <tr>
                                     <th>Defense</th>
-                                    <td>50</td>
+                                    {/*<td>{stats[2].base_stat}</td>*/}
                                 </tr>
 
                                 <tr>
                                     <th>Special Attack</th>
-                                    <td>45</td>
+                                    {/*<td>{stats[3].base_stat}</td>*/}
                                 </tr>
                                 <tr>
                                     <th>Special Defense</th>
-                                    <td>65</td>
+                                    {/*<td>{stats[4].base_stat}</td>*/}
                                 </tr>
                                 <tr>
                                     <th>Speed</th>
-                                    <td>55</td>
+                                    {/*<td>{stats[5].base_stat}</td>*/}
                                 </tr>
                                 </tbody>
                             </table>
@@ -92,16 +84,11 @@ const PokemonCard = props => {
                                     {/*{abilities[0].ability.name}*/}
                                 </h4>
                                 <h4 className="card__ability">
-                                    <span className="card__label">Hidden Ability</span>
-                                    {/*{abilities[1].ability.name}*/}
-                                </h4>
-                                <h4 className="card__ability">
-                                    <span className="card__label">Details<button className="btn btn-info">GO</button></span>
+                                    <span className="card__label">Details<button className="btn btn-info" onClick={() => goToPokemonDetails()}>GO</button></span>
                                 </h4>
                             </div>
                         </figcaption>
                     </figure>
-                {/*</div>*/}
             </div>
         );
     } else {

@@ -11,24 +11,35 @@ const PokemonListComponent = props => {
         pokemons: []
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+
+
     useEffect (() => {
+        setIsLoading(true)
         PokemonService.getListOfPokemons().then(r => {
             setState ({pokemons: r.data.results})
+            setIsLoading(false)
         })
-    })
-    return (
-        <div>
-            <NavbarComponent/>
-            <div id="cards">
-                {
-                    state.pokemons.map(
+    },[])
 
-                        (pokemon, number) => <PokemonCard pokemonId={number + 1}/>
-                    )
-                }
+    if(!isLoading) {
+        return (
+            <div>
+                <NavbarComponent/>
+                <div id="cards">
+                    {
+                        state.pokemons.map(
+
+                            (pokemon, number) => <PokemonCard pokemonId={number + 1}/>
+                        )
+                    }
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return <h3 style={{ textAlign: 'center', marginBottom: '400px' }}>Loading...</h3>;
+    }
+
 
 }
 
