@@ -30,7 +30,7 @@ const PokemonListComponent = props => {
                     {
                         state.pokemons.map(
 
-                            (pokemon, number) => <PokemonCard pokemonId={number + 1}/>
+                            (pokemon, number) => <PokemonCard history={props.history} pokemonId={number + 1}/>
                         )
                     }
                 </div>
