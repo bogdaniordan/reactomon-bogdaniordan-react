@@ -8,6 +8,8 @@ import PokemonDetailsComponent from "./components/PokemonDetailsComponent";
 import PokemonTypesComponent from "./components/PokemonTypesComponent";
 import {PokemonProvider} from "./components/PokemonContext";
 import CaughtPokemons from "./components/CaughtPokemons";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 
