@@ -1,15 +1,11 @@
-import NavbarComponent from "./NavbarComponent";
-// import "../css/details.css";
-import PokemonService from "../service/PokemonService";
 import React, {useState, useEffect, useContext} from "react";
-import {PokemonContext} from "./PokemonContext";
 import '../css/list_cards.scss'
+import {PokemonContext} from "./PokemonContext";
+import PokemonService from "../service/PokemonService";
+import NavbarComponent from "./NavbarComponent";
 
-
-const PokemonDetailsComponent = props => {
-    const id = props.match.params.pokemonId;
-
-    const pokemons = useContext(PokemonContext);
+const PokemonCard = props => {
+    const id = props.pokemonId;
 
     const [pokemon, setPokemon] = useState({})
     const [name, setName] = useState("");
@@ -44,8 +40,8 @@ const PokemonDetailsComponent = props => {
     if (!isLoading) {
         return (
             <div>
-                <NavbarComponent />
-                <div id="cards">
+                {/*<NavbarComponent />*/}
+                {/*<div id="cards">*/}
                     <figure className="card card--normal">
                         <div className="card__image-container">
                             <img src={sprites.front_default}
@@ -100,46 +96,17 @@ const PokemonDetailsComponent = props => {
                                     {/*{abilities[1].ability.name}*/}
                                 </h4>
                                 <h4 className="card__ability">
-                                    <span className="card__label">Catch pokemon<button className="btn btn-info">Catch</button></span>
+                                    <span className="card__label">Details<button className="btn btn-info">GO</button></span>
                                 </h4>
                             </div>
                         </figcaption>
                     </figure>
-                </div>
-                {/*<div className="container">*/}
-                {/*    <div className="row">*/}
-                {/*        <div className="col-md-5">*/}
-                {/*            <div className="project-info-box mt-0">*/}
-                {/*                <h5>{name.name}</h5>*/}
-                {/*                /!*<p className="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor*!/*/}
-                {/*                /!*    porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est.*!/*/}
-                {/*                /!*    Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>*!/*/}
-                {/*            </div>*/}
-
-                {/*            <div className="project-info-box">*/}
-                {/*                <p><b>Base experience:</b> {state.pokemon.base_experience}</p>*/}
-                {/*                <p><b>Height:</b> {state.pokemon.height}</p>*/}
-                {/*                <p><b>Weight:</b> {state.pokemon.weight}</p>*/}
-                {/*                /!*<p className="mb-0"><b>Budget:</b> $500</p>*!/*/}
-                {/*            </div>*/}
-
-                {/*        </div>*/}
-
-                {/*        <div className="col-md-7">*/}
-                {/*            <img src="https://cdn.vox-cdn.com/thumbor/3ajecDMOIH59cbOeyO0bap_4wj4=/0x0:2257x1320/1200x800/filters:focal(949x480:1309x840)/cdn.vox-cdn.com/uploads/chorus_image/image/63738986/pokemon.0.0.png" alt="project-image"*/}
-                {/*                 className="rounded"/>*/}
-                {/*                <div className="project-info-box">*/}
-                {/*                    {JSON.parse(localStorage.getItem("pokemons")).includes(name) ? <p>ALREADY CAUGHT!</p> : <button className="btn btn-success" onClick={() => pokemons.catchPokemon(name)}>Catch it!</button>}*/}
-                {/*                </div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
                 {/*</div>*/}
             </div>
         );
     } else {
         return <h3 style={{ textAlign: 'center', marginBottom: '400px' }}>Loading...</h3>;
     }
-
 }
 
-export default PokemonDetailsComponent;
+export default PokemonCard;
