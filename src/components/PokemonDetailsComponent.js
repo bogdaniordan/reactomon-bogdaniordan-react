@@ -1,5 +1,4 @@
 import NavbarComponent from "./NavbarComponent";
-// import "../css/details.css";
 import PokemonService from "../service/PokemonService";
 import React, {useState, useEffect, useContext} from "react";
 import {PokemonContext} from "./PokemonContext";
