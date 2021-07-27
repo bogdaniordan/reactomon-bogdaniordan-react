@@ -1,54 +1,43 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavbarComponent from "./NavbarComponent";
 import PokemonService from "../service/PokemonService";
-import {Card} from 'react-bootstrap';
-import {Button} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
+import '../css/list_cards.scss'
+import PokemonCard from "./PokemonCard";
 
 
-class PokemonListComponent extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            pokemons: []
-        }
-        this.goToPokemonDetails = this.goToPokemonDetails.bind(this)
-    }
+const PokemonListComponent = props => {
+    const [state, setState] = useState({
+        pokemons: []
+    });
 
-    goToPokemonDetails(pokemonNumber) {
-        // PokemonService.getPokemonDetailsById(pokemonNumber).then(r => {
-        //     console.log(r.data)
-        // })
-        this.props.history.push(`pokemon/${pokemonNumber}`)
-    }
+    const [isLoading, setIsLoading] = useState(false);
 
-    componentDidMount() {
+
+    useEffect (() => {
+        setIsLoading(true)
         PokemonService.getListOfPokemons().then(r => {
-            this.setState({pokemons: r.data.results})
-            console.log(r.data)
-            console.log(this.state.pokemons)
+            setState ({pokemons: r.data.results})
+            setIsLoading(false)
         })
-    }
-    render() {
+    },[])
+
+    if(!isLoading) {
         return (
             <div>
-                <NavbarComponent />
-                {
-                    this.state.pokemons.map(
-                        (pokemon, number) =>  <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0G0uPlhZ-8uNw9xPXpgzTiAxHuv3Z-iXjkQ&usqp=CAU" />
-                                           <Card.Body>
-                                            <Card.Title>{pokemon.name}</Card.Title>
-                                            <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                            </Card.Text>
-                                            <Button variant="primary" onClick={() => this.goToPokemonDetails(number + 1)}>Learn more</Button>
-                                            </Card.Body>
-                                    </Card>
-                    )
-                }
+                <NavbarComponent/>
+                <div id="cards">
+                    {
+                        state.pokemons.map(
+
+                            (pokemon, number) => <PokemonCard history={props.history} pokemonId={number + 1}/>
+                        )
+                    }
+                </div>
             </div>
-        );
+        )
+    } else {
+        return <h3 style={{ textAlign: 'center', marginBottom: '400px' }}>Loading...</h3>;
     }
 }
 
