@@ -13,7 +13,7 @@ const Main = props => {
 
     const pageStyle = {
         backgroundColor: `${theme}`,
-        paddingBottom: '10px'
+        color: `${theme}` === '#E0FFFF' ? "black" : "white"
     }
 
         return (

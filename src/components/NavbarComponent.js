@@ -7,13 +7,10 @@ import {ThemeContext} from "./ThemeContext";
 const NavbarComponent = props => {
     const [theme, setTheme] = useContext(ThemeContext);
 
-    // const checked = theme !== '#E0FFFF';
-    console.log(theme)
-
     const toggleTheme = () => {
-        console.log(theme);
         setTheme(theme==='#E0FFFF'?'#2F4F4F':'#E0FFFF');
     };
+
         return (
             <div>
                 <Navbar  bg="dark" variant="dark">

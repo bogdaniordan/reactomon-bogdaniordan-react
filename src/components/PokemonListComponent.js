@@ -39,8 +39,6 @@ const PokemonListComponent = props => {
     } else {
         return <h3 style={{ textAlign: 'center', marginBottom: '400px' }}>Loading...</h3>;
     }
-
-
 }
 
 export default PokemonListComponent;
