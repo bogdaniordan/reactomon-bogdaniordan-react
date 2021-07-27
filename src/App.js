@@ -8,33 +8,18 @@ import {PokemonProvider} from "./components/PokemonContext";
 import CaughtPokemons from "./components/CaughtPokemons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {ThemeProvider} from "./components/ThemeContext";
+import {ThemeContext} from "./components/ThemeContext";
+import Main from "./components/Main"
 
 
 function App() {
-
-    // const [theme, setTheme] = useContext(ThemeContext);
-
-    // const pageStyle = {
-    //     backgroundColor: `${theme}`
-    // }
-
     return (
-        <div className="App">
-          <Router>
-            <Switch>
-                <PokemonProvider>
-                    <ThemeProvider>
-                        {/*<Route path="/" exact component = {PokemonListComponent}></Route>*/}
-                        <Route path={["/pokemons", "/"]} exact component={PokemonListComponent}></Route>
-                        <Route path="/pokemon/:pokemonId" component={PokemonDetailsComponent}></Route>
-                        <Route path="/types" component={PokemonTypesComponent}></Route>
-                        <Route path="/caught-pokemons" component={CaughtPokemons}></Route>
-                    </ThemeProvider>
-                </PokemonProvider>
-            </Switch>
-          </Router>
-        </div>
-  );
+        <ThemeProvider>
+-           <PokemonProvider>
+                <Main />
+            </PokemonProvider>
+        </ThemeProvider>
+    );
 }
 
 export default App;

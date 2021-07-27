@@ -1,11 +1,12 @@
 import React, { useState, useEffect, createContext } from "react";
 
-export const ThemeContext = createContext();
+const storage = localStorage.getItem("theme");
+
+export const ThemeContext = createContext(storage ? storage : '#E0FFFF');
 
 export const ThemeProvider = (props) => {
-    const storage = localStorage.getItem("theme");
 
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || '#E0FFFF');
+    const [theme, setTheme] = useState(storage ? storage : '#E0FFFF');
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
