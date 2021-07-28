@@ -7,6 +7,8 @@ import {ThemeContext} from "./ThemeContext";
 const NavbarComponent = props => {
     const [theme, setTheme] = useContext(ThemeContext);
 
+    const caughtPokemons = JSON.parse(localStorage.getItem("pokemons"));
+
     const toggleTheme = () => {
         setTheme(theme==='#E0FFFF'?'#2F4F4F':'#E0FFFF');
     };
@@ -16,7 +18,7 @@ const NavbarComponent = props => {
                 <Navbar  bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand href="/pokemons">List</Navbar.Brand>
-                        <Navbar.Brand href="/caught-pokemons">Caught pokemons</Navbar.Brand>
+                        <Navbar.Brand href="/caught-pokemons">Caught pokemons - {caughtPokemons ? caughtPokemons.length : 0}</Navbar.Brand>
                         <Navbar.Brand href="/types">Types</Navbar.Brand>
                         <Navbar.Brand>    <div className="custom-control custom-switch" style={{ marginLeft: '160px', fontSize: 'large' }}>
                             <input type="checkbox" className="custom-control-input" id="darkSwitch"/>
