@@ -1,0 +1,4 @@
+[build]
+base = "reactomon-bogdaniordan-react/"
+publish = "reactomon-bogdaniordan-react/build/"
+command = "npm run build"
