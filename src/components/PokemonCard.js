@@ -12,14 +12,13 @@ const PokemonCard = props => {
     const [abilities, setAbilities] = useState([]);
     const [stats, setStats] = useState([]);
     const [sprites, setSprites] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const goToPokemonDetails= () => {
         props.history.push(`pokemon/${id}`)
     }
 
     useEffect(() => {
-        setIsLoading(true);
         PokemonService.getPokemonDetailsById(id).then(r => {
             setPokemon(r.data)
             setName(r.data.name);
@@ -51,29 +50,29 @@ const PokemonCard = props => {
                                 <tbody>
                                 <tr>
                                     <th>HP</th>
-                                    {/*<td>{stats[0].base_stat}</td>*/}
+                                    <td>{stats[0].base_stat}</td>
                                 </tr>
                                 <tr>
                                     <th>Attack</th>
-                                    {/*<td>{stats[1].base_stat}</td>*/}
+                                    <td>{stats[1].base_stat}</td>
                                 </tr>
 
                                 <tr>
                                     <th>Defense</th>
-                                    {/*<td>{stats[2].base_stat}</td>*/}
+                                    <td>{stats[2].base_stat}</td>
                                 </tr>
 
                                 <tr>
                                     <th>Special Attack</th>
-                                    {/*<td>{stats[3].base_stat}</td>*/}
+                                    <td>{stats[3].base_stat}</td>
                                 </tr>
                                 <tr>
                                     <th>Special Defense</th>
-                                    {/*<td>{stats[4].base_stat}</td>*/}
+                                    <td>{stats[4].base_stat}</td>
                                 </tr>
                                 <tr>
                                     <th>Speed</th>
-                                    {/*<td>{stats[5].base_stat}</td>*/}
+                                    <td>{stats[5].base_stat}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -81,7 +80,7 @@ const PokemonCard = props => {
                             <div className="card__abilities">
                                 <h4 className="card__ability">
                                     <span className="card__label">Ability</span>
-                                    {/*{abilities[0].ability.name}*/}
+                                    {abilities[0].ability.name}
                                 </h4>
                                 <h4 className="card__ability">
                                     <span className="card__label">Details<button className="btn btn-info" onClick={() => goToPokemonDetails()}>GO</button></span>

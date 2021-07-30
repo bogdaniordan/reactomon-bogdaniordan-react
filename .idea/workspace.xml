@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c8f3aac-3130-461f-80f8-cb5cd359e786" name="Default Changelist" comment="" />
+    <list default="true" id="5c8f3aac-3130-461f-80f8-cb5cd359e786" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PokemonCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PokemonCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PokemonDetailsComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PokemonDetailsComponent.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +35,7 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1vndprzgFUvT0xwb4eF3x3sGf62" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -82,6 +87,11 @@
       <workItem from="1627315648888" duration="3461000" />
       <workItem from="1627378707264" duration="10507000" />
       <workItem from="1627457308522" duration="460000" />
+      <workItem from="1627457803092" duration="554000" />
+      <workItem from="1627458376549" duration="77000" />
+      <workItem from="1627481053221" duration="4000" />
+      <workItem from="1627570529425" duration="203000" />
+      <workItem from="1627652642862" duration="709000" />
     </task>
     <servers />
   </component>

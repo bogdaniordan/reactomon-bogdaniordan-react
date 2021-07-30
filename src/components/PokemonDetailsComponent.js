@@ -16,7 +16,7 @@ const PokemonDetailsComponent = props => {
     const [abilities, setAbilities] = useState([]);
     const [stats, setStats] = useState([]);
     const [sprites, setSprites] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     function createLocalStorage() {
         if (!JSON.parse(localStorage.getItem("pokemons"))) {
@@ -25,7 +25,6 @@ const PokemonDetailsComponent = props => {
     }
 
     useEffect(() => {
-        setIsLoading(true);
         PokemonService.getPokemonDetailsById(id).then(r => {
             setStats(r.data.stats);
             setName(r.data.name);
